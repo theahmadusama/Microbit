@@ -1,0 +1,384 @@
+{% extends "layouts/base.html" %}
+{% block contents %}
+    <div class="container mb-3">
+        <div class="heading_container">
+            <h1 class="h2 text-dark">
+                Quote Request
+            </h1>
+        </div>
+    </div>
+    <section class="card ">
+
+        <ul class="nav nav-tabs col-12 row mx-0" id="myTab" role="tablist">
+            <li class="nav-item col p-0">
+                <a class="nav-link active tab" role="tab"
+                   aria-controls="Design Details" data-tab="1" id="design-tab" data-toggle="tab" href="#design"
+                   aria-selected="true" style="font-size: 16px">
+                    <span style="font-size: 24px">1</span> Design Details</a>
+            </li>
+            <li class="nav-item col p-0">
+                <a class="nav-link tab" href="#material" style="font-size: 16px"
+                   role="tab" data-toggle="tab" data-tab="2" id="material-tab"
+                   aria-controls="Material Details" aria-selected="false">
+                    <span style="font-size: 24px">2</span> Material Details</a>
+            </li>
+            <li class="nav-item col p-0">
+                <a class="nav-link tab" data-tab="3" id="personal-tab" href="#personal" style="font-size: 16px"
+                   data-toggle="tab"
+                   role="tab" aria-controls="Personal Details" aria-selected="false"><span
+                        style="font-size: 24px">3</span>
+                    Personal Details</a>
+            </li>
+        </ul>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active p-3" id="design" role="tabpanel">
+                    <h3 style="font-size: 21px;" class="mb-3">Upload Design</h3>
+                    <div style="border-radius: 3px; border: 1px solid lightgray" class="px-4 pt-3">
+
+                        <h3 style="font-size: 14px">Upload Design</h3>
+                        <div class="custom-file">
+                            {{ form.upload_design }}
+                            <label class="custom-file-label"
+                                   for="validatedCustomFile">Upload</label>
+                            <hint>We support .pdf, .png, .jpg, .doc, .docx, .txt, .rtf, .odt</hint>
+                            <br>
+                            <hint>File size Limit: 00mb</hint>
+                        </div>
+
+
+                        <div class="form-group mt-3">
+                            <label for="quantity">Required Quantity</label>
+                            <input type="number" id="quantity" class="form-control w-auto pg1Control" required
+                                   name="quantity"
+                                   placeholder="Quantity">
+                        </div>
+
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="request">Describe request</label>
+                        <div class="input-group ">
+                            {{form.request_for_quote}}
+
+<!--                            <textarea type="text" id="request" name="request_for_quote" rows="6" required-->
+<!--                                      class="form-control pg1Control"-->
+<!--                                      placeholder="Describe request"></textarea>-->
+                        </div>
+                    </div>
+                    <div class="w-100 text-right">
+                        <a class="btn btn-primary clickable nextStep" data-tab="material"> Next Step</a>
+                    </div>
+                </div>
+                <div class="tab-pane fade p-3" id="material" role="tabpanel">
+                    <h3 style="font-size: 21px;" class="mb-3">Add Material Details</h3>
+                    <div class="col-12 row mx-0 px-0">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="materialInput">Select Material</label>
+                                <select name="material" id="materialInput" class="form-control pg2Control" required>
+                                    <option selected disabled></option>
+                                    <option>Material 1</option>
+                                    <option>Material 2</option>
+                                    <option>Other</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="form-group">
+                                <label for="otherMaterial">Other not listed Material</label>
+                                <input disabled type="text" id="otherMaterial" class="form-control w-100"
+                                       name="other_material"
+                                       placeholder="Insert other not listed material">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-radius: 3px; border: 1px solid lightgray" class="px-4 py-3">
+                        <h4 style="font-size: 18px;" class="mb-3">Add Material Details</h4>
+                        <div class="form-group">
+                            <label for="material_type">Material Type</label>
+                            <select name="material_type" id="material_type" class="form-control pg2Control">
+                                <option selected>Supplied</option>
+                                <option>Required</option>
+                            </select>
+
+                        </div>
+                        <div class="col-12 row mx-0 px-0 extraMaterialInputs">
+                            <div class="col-lg-6 px-0 pr-md-2">
+                                <div class="form-group">
+                                    <label for="size">Size</label>
+                                    <input type="text" id="size" class="form-control w-100 pg2Control" required
+                                           name="material_size"
+                                           placeholder="Size">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 px-0 pl-md-2">
+                                <div class="form-group">
+                                    <label for="other">Other Details</label>
+                                    <input type="text" id="other" class="form-control w-100 pg2Control" required
+                                           name="material_other_details"
+                                           placeholder="Other Details">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size: 14px">Material Health & Safety Document</h3>
+                        <div class="custom-file">
+                            {{ form.health_safety }}
+                            <label class="custom-file-label"
+                                   for="validatedCustomFile">Upload</label>
+                            <hint>We support .pdf, .png, .jpg, .doc, .docx, .txt, .rtf, .odt</hint>
+                            <br>
+                            <hint>File size Limit: 00mb</hint>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="other">Select Delivery Date</label>
+                        <input type="date" name="delivery_date" class="form-control pg2Control" required
+                               placeholder="Select Date">
+                    </div>
+                    <div class="w-100 text-right">
+                        <a class="btn btn-primary clickable nextStep" data-tab="personal"> Next Step</a>
+                    </div>
+                </div>
+                <div class="tab-pane fade p-3" id="personal" role="tabpanel">
+                    <h3 style="font-size: 21px;" class="mb-3">Company Details</h3>
+                    <div class="col-12 row mx-0 px-0">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_name">Company Name</label>
+                                {{form2.company_name}}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_line_1">Company Address Line 1</label>
+                                {{form2.company_address_1}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_line_2">Company Address Line 2</label>
+                                {{form2.company_address_2}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="town">Town/City</label>
+                                {{form2.town}}
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="country">Country</label>
+                                {{form2.country}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="post_code">Postal Code</label>
+                                {{form2.postal_code}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="vat">Company VAT Number</label>
+                                {{form2.company_vat_number}}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 21px;" class="mb-3">Personal Details</h3>
+                    <div class="col-12 row mx-0 px-0">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="first_name">First Name</label>
+                                {{form2.first_name}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="last_name">Last Name</label>
+                                {{form2.last_name}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="email">Email Address</label>
+                                {{form2.email}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="phone">Phone Number</label>
+                                {{form2.phone_number}}
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="role">Company Role</label>
+                                {{form2.company_role}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input pg3Control" type="checkbox" value=""
+                                           id="invalidCheck1"
+                                           required>
+                                    <label class="form-check-label" for="invalidCheck1">
+                                        Agree to terms and conditions
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2">
+                                    <label class="form-check-label" for="invalidCheck2">
+                                        Receive microbirtt email communications
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-100 text-right">
+                        <div class="btn-box ">
+                            <button type="submit" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="errorMsg" style="display: none" class="alert alert-danger col-lg-8 mx-auto"
+                     role="alert">
+                </div>
+            </div>
+
+        </form>
+
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+        $(function () {
+            $('#id_upload_design').addClass('custom-file-input pg1Control').prop('required', true);
+            $('#id_health_safety').addClass('custom-file-input pg2Control').prop('required', true);
+
+            $('#materialInput').change(function () {
+                if ($(this).val() == 'Other') {
+                    $('#otherMaterial').prop('required', true).removeAttr('disabled').addClass('pg2Control');
+                } else {
+                    $('#otherMaterial').removeAttr('required').attr('disabled', true).val('').removeClass('pg2Control');
+                }
+            })
+            $('#material_type').change(function () {
+                if ($(this).val() == 'Supplied') {
+                    $('.extraMaterialInputs').show()
+                    $('#other').prop('required', true)
+                    $('#size').prop('required', true)
+                } else {
+                    $('.extraMaterialInputs').hide()
+                    $('#other').removeAttr('required').val('');
+                    $('#size').removeAttr('required').val('');
+                }
+            })
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                e.preventDefault()
+                let activeTab = $('#' + e.relatedTarget.id)
+                let requested = $('#' + e.target.id)
+                let currentTab = activeTab.attr('data-tab')
+
+                if (JSON.parse(currentTab) < JSON.parse(requested.attr('data-tab'))) {
+                    {#   if they are trying to progress then validate form of current page #}
+
+                    if (!validatePage(currentTab)) {
+                        activeTab.tab('show')
+                    }
+                }
+            });
+
+            $('.nextStep').click(function () {
+                $('#' + $(this).attr('data-tab') + '-tab').tab('show')
+            })
+        });
+
+        function validatePage(currentTab) {
+            let counter = 0;
+            let missingText;
+            let valid = true;
+            $(".pg" + currentTab + "Control").each(function () {
+                if ($(this).is(':valid') === false && $(this).not('select') && !$(this).is('input:file')) {
+                    $(this).addClass('border-danger');
+                    valid = false;
+                    if (counter < 1) {
+                        counter++;
+                        let text = $(this).attr("name")
+                        if ($(this).attr("data-name")) {
+                            text = $(this).attr("data-name")
+                        }
+                        if ($(this).attr("placeholder")) {
+                            text = $(this).attr("placeholder")
+                        }
+                        missingText = '"' + text + '" ' + $(this)[0].validationMessage;
+                    }
+                } else if ($(this).is('select') && $(this).prop('required') && $(this).val() === '' && !$(this).is('input:file')) {
+                    $(this).addClass('border-danger');
+                    valid = false;
+                    if (counter < 1) {
+                        let text = $(this).attr("name")
+                        if ($(this).attr("data-name")) {
+                            text = $(this).attr("data-name")
+                        }
+                        if ($(this).attr("placeholder")) {
+                            text = $(this).attr("placeholder")
+                        }
+                        counter++;
+                        missingText = '"' + text + '" ' + $(this)[0].validationMessage;
+                    }
+                } else if ($(this).is('input:file') && $(this).prop('required') && $(this).get(0).files.length === 0) {
+                    $(this).siblings().addClass('border-danger');
+                    valid = false;
+                    if (counter < 1) {
+                        let text = $(this).attr("name")
+                        if ($(this).attr("data-name")) {
+                            text = $(this).attr("data-name")
+                        }
+                        if ($(this).attr("placeholder")) {
+                            text = $(this).attr("placeholder")
+                        }
+                        counter++;
+                        missingText = '"' + text + '" ' + $(this)[0].validationMessage;
+                    }
+                } else {
+                    $(this).removeClass('border-danger');
+                    $(this).siblings().removeClass('border-danger');
+
+                }
+
+            });
+            if (!valid) {
+                $('#errorMsg').show().html('Please complete all required fields to ensure they are correct: ' + missingText);
+
+            } else {
+                $('#errorMsg').hide()
+            }
+            return valid
+        }
+    </script>
+{% endblock %}

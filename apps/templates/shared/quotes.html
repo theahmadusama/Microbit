@@ -1,0 +1,84 @@
+{% extends "layouts/base.html" %}
+{% block contents %}
+    <div class="container mb-3">
+        <div class="heading_container">
+            <h1 class="h2 text-dark">
+                Quotes
+            </h1>
+        </div>
+    </div>
+    {% if staff %}
+    <form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+        <div style="padding-bottom:30px" class="row">
+            <!--        date feature-->
+
+            <div class="form-group col-md-3">
+                <label for="fromdate"><b>From :</b></label>
+                <input type="date" class="form-control" required="true" id="fromdate" name="fromdate">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="todate"><b>To :</b></label>
+                <input type="date" class="form-control" required="true" id="todate" name="todate">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="ppname"><b>Order Status :</b></label>
+                {{form.order_status}}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="ppname"><b>Customer :</b></label>
+                {{form.user}}
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="search"><b>Filter Results</b></label>
+                <input type="submit" class="form-control" id="search" name="search" value="Search"/>
+            </div>
+
+        </div>
+    </div>
+    </form>
+    {% endif %}
+    <section class="card ">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Request</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Order Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Company</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for quote in quotes %}
+                <tr>
+                    <td>{{quote.user.userprofile.email}}</td>
+                    <td>{{quote.material}}</td>
+                    <td>{{quote.quantity}}</td>
+                    <td>
+
+                        <div class="ms-auto col-lg-12 row">
+                            <dl class="text-center mb-1 me-1 col p-0">
+                                <dt class="graphSuccess">Green</dt>
+                            </dl>
+                            <p class="mb-0 col mt-1 p-0">Paid</p>
+                        </div>
+                    </td>
+
+                    <td>{{quote.order_status}}</td>
+                    <td>{{quote.created_time}}</td>
+                    <td>{{quote.user.userprofile.company_name}}</td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

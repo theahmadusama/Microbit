@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        microbtritt | Client Portal
+    </title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-dattaable">
+
+    <meta name="description" content="Rapid manufacturing of brittle materials">
+
+    <meta name="author" content="NebulaLabs"/>
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="../../static/assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="../../static/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="../../static/assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="../../static/assets/css/style.css">
+
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+
+{% include 'includes/navigation.html' %}
+
+<div style="background-color: #E5E5E5;" class="row col-12 mx-0">
+
+    <div class="col-11 col-lg-8 mx-auto my-5">
+        {% block contents %}{% endblock contents %}
+    </div>
+</div>
+{% include 'includes/scripts.html' %}
+
+<footer class="bg-white">
+    <div class="info_container">
+        <div class="container">
+            <div class="row pt-5">
+                <a class="col-lg-3 text-center px-4" href="http://13.40.247.75/">
+                    <svg class="w-50 mx-auto" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g style="mix-blend-mode:multiply">
+                            <path d="M23.9772 42V18.061L35.806 6.09155V30.0305L23.9772 42Z" fill="#39A7DF"/>
+                        </g>
+                        <g style="mix-blend-mode:multiply">
+                            <path d="M35.806 6.09155H11.9353L0 17.9541H23.8707L35.806 6.09155Z" fill="#39A7DF"/>
+                        </g>
+                        <g style="mix-blend-mode:multiply">
+                            <path d="M35.806 30.1375H12.1485L0.319702 42H23.9772L35.806 30.1375Z" fill="#39A7DF"/>
+                        </g>
+                        <g style="mix-blend-mode:multiply">
+                            <path d="M0 41.6793V17.9541L11.8288 6.09155V29.8167L0 41.6793Z" fill="#39A7DF"/>
+                        </g>
+                        <g style="mix-blend-mode:multiply">
+                            <path d="M21.8546 8.01712L17.903 11.9798V24.0458H29.9353L33.8855 20.0831L41.8802 12.066L29.8493 0L21.8546 8.01712Z"
+                                  fill="#ACBBC4"/>
+                        </g>
+                    </svg>
+                    <br>
+                    <h4 style="font-size: 50px">microbritt</h4>
+                </a>
+                <div class=" col-lg-3">
+                    <div class="info_nav_link">
+                        <ul>
+                            <li>
+                                <a href="http://13.40.247.75/">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/services">
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/materials">
+                                    Materials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/resources">
+                                    Resources
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/faq">
+                                    Faq
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/about">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="info_nav_link">
+                        <ul>
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/company/microbritt/">
+                                    <i class="fa-2x fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/microbritt_ltd" target="_blank">
+                                    <i class="fa-2x fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="fa-2x fab fa-youtube"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/microbritt_ltd/?hl=en" target="_blank">
+                                    <i class="fa-2x fab fa-instagram"></i> </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="fa-2x fas fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="info_nav_link">
+                        <ul>
+                            <li>
+                                <a href="http://13.40.247.75/policies">
+                                    Policies
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://13.40.247.75/terms">
+                                    Terms
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <img src="../../static/assets/images/Screenshot%202022-03-08%20at%2016.14%202.png">
+                </div>
+            </div>
+            <section class=" footer_section w-100 text-center">
+                <p>
+                    Copyright nutra &copy; {% now 'Y' %}. Designed by <a target="_blank" href="https://layers.studio/">Layers</a>
+                    built
+                    by <a target="_blank" href="https://www.nebulalabs.co.uk/">Nebula Labs</a>
+                </p>
+            </section>
+        </div>
+    </div>
+</footer>
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>

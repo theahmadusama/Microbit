@@ -1,0 +1,178 @@
+{% extends "layouts/base.html" %}
+{% block contents %}
+    <div class="container mb-3">
+        <div class="heading_container">
+            <h1 class="h2 text-dark">
+                Settings
+            </h1>
+        </div>
+    </div>
+        {% if messages %}
+        <ul class="alert alert-primary">
+            {% for message in messages %}
+            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <section class="card ">
+        <div class="card-body">
+            <form action="{% url 'profile-update' %}" method="post" class="px-5">
+                {% csrf_token %}
+
+                    {% if not request.user.is_staff %}
+                    <h3 style="font-size: 21px;" class="mb-3">Company Details</h3>
+                    <div class="col-12 row mx-0 px-0">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_name">Company Name</label>
+
+                                <input type="text" id="company_name" name="company_name" required
+                                       class="form-control pg3Control"
+                                       value="{{user.company_name}}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_line_1">Company Address Line 1</label>
+
+                                <input type="text" id="company_address_1" name="company_address_1" required
+                                       class="form-control pg3Control"
+                                       value="{{user.company_address_1}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="company_line_2">Company Address Line 2</label>
+
+                                    <input type="text" id="company_address_2" name="company_address_2" required
+                                       class="form-control pg3Control"
+                                       value="{{user.company_address_2}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="town">Town/City</label>
+
+                                <input type="text" id="town" name="town" required class="form-control pg3Control"
+                                       value="{{user.town}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="country">Country</label>
+
+                                <input type="text" id="country" name="country" required class="form-control pg3Control"
+                                       value="{{user.country}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="post_code">Postal Code</label>
+
+                                <input type="text" id="post_code" name="postal_code" required
+                                       class="form-control pg3Control"
+                                       value="{{user.postal_code}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="vat">Company VAT Number</label>
+
+                                <input type="text" id="vat" name="company_vat_number" class="form-control"
+                                       value="{{user.company_vat_number}}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <h3 style="font-size: 21px;" class="mb-3">Personal Details</h3>
+                    <div class="col-12 row mx-0 px-0">
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="first_name">First Name</label>
+
+
+                                <input type="text" id="firstname" name="first_name" required
+                                       class="form-control pg3Control"
+                                       value="{{user.first_name}}" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="last_name">Last Name</label>
+
+                                    <input type="text" id="last_name" name="last_name" required
+                                       class="form-control pg3Control"
+                                       value="{{user.last_name}}" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="email">Email Address</label>
+
+                            <input type="tel" id="email" name="email" required
+                                       class="form-control pg3Control"
+                                       value="{{user.email}}" readonly>
+                            </div>
+                        </div>
+                        {% if not request.user.is_staff %}
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="phone">Phone Number</label>
+                                {{form2.phone_number}}
+                                <input type="tel" id="phonenumber" name="phone_number" required
+                                       class="form-control pg3Control"
+                                       value="{{user.phone_number}}" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mt-2">
+                                <label for="role">Company Role</label>
+                                <input type="text" id="companyrole" name="company_role" required
+                                       class="form-control pg3Control"
+                                       value="{{user.company_role}}" >
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                <div class="w-100">
+                    <input class="btn btn-primary" type="submit" name="Update Data" id="" value="Update Information">
+                </div>
+            </form>
+                <form method="post" action="" class="px-5">
+                    {% csrf_token %}
+                <h3 style="font-size: 21px;" class="mb-3">Password Information</h3>
+                <div class="col-12 row mx-0 px-0 ">
+                    <div class="col-lg-12 ">
+                        <div class="form-group">
+                            <label for="name">Current Password</label>
+                            <input type="password" id="name" class="form-control w-100" required
+                                   name="password">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="email">New Password</label>
+                            <input type="password" id="password1" class="form-control w-100 " required
+                                   name="password1">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="email">Confirm New Password</label>
+                            <input type="password" id="password2" class="form-control w-100 " required
+                                   name="password2">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <input class="btn btn-primary" type="submit" name="Update Data" id="" value="Update Password">
+                </div>
+            </form>
+<!--             <div class="w-100 text-right">-->
+<!--                    <a class="btn btn-danger text-white" data-tab="personal">Delete Account</a>-->
+<!--                </div>-->
+        </div>
+
+    </section>
+{% endblock %}

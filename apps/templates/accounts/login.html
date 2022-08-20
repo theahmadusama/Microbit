@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block contents %}
+
+    <div class="col-lg-6 mx-auto">
+        <div class="auth-content">
+            <div class="card">
+                <div class="card-body text-left">
+
+                    <div class="px-5">
+
+
+                        <h2 class="mb-4">Log In</h2>
+
+                        <span class="mb-0 text-muted">
+                        {% if msg %}
+                            {{ msg | safe }}
+                        {% else %}
+                            Add your credentials
+                        {% endif %} 
+                    </span>
+
+                        <br/>
+                        <br/>
+
+                        <form role="form" method="post" action="">
+
+                            {% csrf_token %}
+
+                            <div class="input-group mb-3">
+                                {{ form.username }}
+                            </div>
+
+                            <div class="input-group mb-4">
+                                {{ form.password }}
+                            </div>
+
+                            <button type="submit" name="login" class="btn btn-primary mb-4">Login</button>
+
+                        </form>
+
+                        <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'register' %}">Register</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock contents %}
+{% block loginText %}
+    Login
+{% endblock %}

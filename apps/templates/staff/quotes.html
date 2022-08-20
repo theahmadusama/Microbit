@@ -1,0 +1,75 @@
+{% extends "layouts/base.html" %}
+{% block contents %}
+    <div class="container mb-3">
+        <div class="heading_container">
+            <h1 class="h2 text-dark">
+                Quotes
+            </h1>
+        </div>
+    </div>
+    <section class="card ">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Request</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Company</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for quote in quotes %}
+                <tr>
+                    <td>Request 1</td>
+                    <td>Silicone</td>
+                    <td>100</td>
+                    <td>
+                        <div class="ms-auto col-lg-12 row">
+                            <dl class="text-center mb-1 me-1 col p-0">
+                                <dt class="graphSuccess">Green</dt>
+                            </dl>
+                            <p class="mb-0 col mt-1 p-0">Paid</p>
+                        </div>
+                    </td>
+                    <td>DD/MM/YY</td>
+                    <td>Company</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>Request 1</td>
+                    <td>Silicone</td>
+                    <td>100</td>
+                    <td>
+                        <div class="ms-auto col-lg-12 row">
+                            <dl class="text-center mb-1 me-1 col p-0">
+                                <dt class="graphWarning">Yellow</dt>
+                            </dl>
+                            <p class="mb-0 col mt-1 p-0">Due</p>
+                        </div>
+                    </td>
+                    <td>DD/MM/YY</td>
+                    <td>Company</td>
+                </tr>
+                <tr>
+                    <td>Request 1</td>
+                    <td>Silicone</td>
+                    <td>100</td>
+                    <td>
+                        <div class="ms-auto col-lg-12 row">
+                            <dl class="text-center mb-1 me-1 col p-0">
+                                <dt class="graphDanger">Red</dt>
+                            </dl>
+                            <p class="mb-0 col mt-1 p-0">Overdue</p>
+                        </div>
+                    </td>
+                    <td>DD/MM/YY</td>
+                    <td>Company</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

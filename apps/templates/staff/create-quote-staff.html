@@ -1,0 +1,174 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Forms {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block contents %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Form Elements</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Quotes</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Create Quote: {{quote.id}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Detail Quote</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                      <form method="post" enctype="multipart/form-data">
+                                        {%csrf_token%}
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/location.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="text" name="email" class="form-control" placeholder="Enter your Email" />
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/location.png" alt="">
+                                              </div>
+                                            </div>
+                                            <textarea type="text" name="request_for_quote" class="form-control" placeholder="Request for Quote"></textarea>
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/location.png" alt="">
+                                              </div>
+                                            </div>
+                                            {{form.upload_design}} *Upload Design
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="number" class="form-control" name="quantity" placeholder="Input Quantity">
+                                          </div>
+                                        </div>
+                                        <div class="form-group ">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/language.png" alt="">
+                                              </div>
+                                            </div>
+                                            <select name="material_type" id="inputLanguage" class="form-control">
+                                              <option selected disabled>--------</option>
+                                              <option>Supplied</option>
+                                              <option>Required</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                              <div class="input-group-text">
+                                                <img src="images/down-arrow.png" alt="">
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="select_arrow"></div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            {{form.health_safety}} *Health And Safety Document
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="text" name="material" class="form-control" placeholder="Material">
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="date" name="delivery_date" class="form-control" placeholder="Delivery Date">
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="text" name="company_details" class="form-control" placeholder="Company Information">
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                              <div class="input-group-text">
+                                                <img src="images/earth.png" alt="">
+                                              </div>
+                                            </div>
+                                            <input type="text" name="personal_details" class="form-control" placeholder="Personal Information">
+                                          </div>
+                                        </div>
+                                        <div class="btn-box">
+                                          <button type="submit" class="btn btn-primary">Book Now</button>
+                                        </div>
+
+                                      </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contents %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
